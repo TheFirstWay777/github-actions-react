@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
 env:
   NODE_ENV: production
-  GH_SECRET: 42
+  GH_SECRET: ${{ secrets.DEPLOY_SECRET}} # SECRET FROM gh
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production-deploy # Переопределяем глобальную переменную на свою
     steps:
       - name: Print Env Build
         run: |
@@ -16,6 +18,7 @@ jobs:
           echo "${{ env.GH_SECRET }}"
   deploy:
     runs-on: ubuntu-latest
+    env:
     steps:
       - name: Print Env deploy
         run: |
