@@ -1,4 +1,3 @@
-#how to get access  to files by this system
 name: build
 on: [push, workflow_dispatch]
 jobs:
@@ -8,14 +7,12 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install deps
-         run: npm install --legacy-peer-deps  # Заменили npm ci на эту команду
+        run: npm install --legacy-peer-deps
       - name: Build project
         run: npm run build
 
-  #atrifacts
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           path: build
           name: build-files
-
