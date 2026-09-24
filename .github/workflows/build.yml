@@ -8,7 +8,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Install deps
-        run: npm ci
+         run: npm install --legacy-peer-deps  # Заменили npm ci на эту команду
       - name: Build project
         run: npm run build
 
